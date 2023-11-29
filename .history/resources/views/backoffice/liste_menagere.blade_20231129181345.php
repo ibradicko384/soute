@@ -19,7 +19,7 @@
                     </thead>
                     <tbody>
                         @isset($aidesMenageres)
-                            @foreach($aidesMenageres as $Aidemenage)
+                            @foreach($aidemenages as $Aidemenage)
                                 <tr>
                                     <td>{{ $Aidemenage->prenom }}</td>
                                     <td>{{ $Aidemenage->nom }}</td>
@@ -30,6 +30,9 @@
                         @endisset
                     </tbody>
                 </table>
+                @isset($aidemenages)
+    {{ dd($aidemenages) }}
+@endisset
 
             </div>
         </div>

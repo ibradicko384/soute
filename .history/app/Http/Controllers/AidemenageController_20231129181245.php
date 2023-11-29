@@ -51,6 +51,7 @@ class AidemenageController extends Controller
     public function ListeMenagere(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
         $aidesMenageres = Aidemenage::all();
+        dd($aidesMenageres);
         return view('backoffice.liste_menagere', compact('aidesMenageres'));
 
     }

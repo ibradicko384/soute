@@ -29,7 +29,7 @@ class FoyerController extends Controller
     public function lister()
     {
         $foyers = Foyer::all();
-        return view('backoffice.liste_foyer', compact('foyers')); 
+        return view('backoffice.list_foyer', compact('foyers')); 
     }
 
     

@@ -28,6 +28,7 @@
                             <button type="submit" class="btn btn-success">Enregistrer</button>
                         </div>
                     </form>
+                    liste_foyers
 
                 </div>
             </div>

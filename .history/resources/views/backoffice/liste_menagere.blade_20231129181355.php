@@ -30,6 +30,8 @@
                         @endisset
                     </tbody>
                 </table>
+                @isset($aidemenages)
+@endisset
 
             </div>
         </div>

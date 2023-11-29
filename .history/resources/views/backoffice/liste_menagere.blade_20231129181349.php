@@ -30,6 +30,9 @@
                         @endisset
                     </tbody>
                 </table>
+                @isset($aidemenages)
+    {{ dd($aidemenages) }}
+@endisset
 
             </div>
         </div>

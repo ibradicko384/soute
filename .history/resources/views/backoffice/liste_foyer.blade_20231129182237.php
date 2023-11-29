@@ -25,13 +25,12 @@
                                     <td>{{ $foyer->quartier }}</td>
                                     <td>
                                         <!-- Ajoutez ici des liens pour les actions (modifier, supprimer, etc.) en utilisant les routes appropriées -->
-                                        <a href="{{ route('foyer.show', ['id' => $foyer->id]) }}" class="btn btn-primary">Voir le foyer</a>
-                                        {{-- <a href="{{ route('foyer.edit', ['id' => $foyer->id]) }}" class="btn btn-primary">Modifier</a> --}}
-                                        {{-- <form action="{{ route('foyer.destroy', ['id' => $foyer->id]) }}" method="POST" style="display:inline;">
+                                        <!-- <a href="{{ route('foyer.edit', ['id' => $foyer->id]) }}" class="btn btn-primary">Modifier</a> -->
+                                        <form action="{{ route('foyer.destroy', ['id' => $foyer->id]) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Supprimer</button>
-                                        </form> --}}
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -39,7 +38,10 @@
                     </table>
                 </div>
 
-                
+                <!-- Boucle Foreach pour le lien "Voir le foyer" -->
+                @foreach ($foyers as $foyer)
+                    <p>{{ $foyer->nom }} - <a href="{{ route('backoffice.foyer', ['id' => $foyer->id]) }}">Voir le foyer</a></p>
+                @endforeach
             </div>
         </div>
     </div>

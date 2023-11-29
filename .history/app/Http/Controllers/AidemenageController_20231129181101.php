@@ -50,8 +50,8 @@ class AidemenageController extends Controller
 
     public function ListeMenagere(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-        $aidesMenageres = Aidemenage::all();
-        return view('backoffice.liste_menagere', compact('aidesMenageres'));
+        $aidemenages
+        return view('backoffice.liste_menagere');
 
     }
 

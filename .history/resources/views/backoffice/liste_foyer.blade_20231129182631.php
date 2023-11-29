@@ -39,7 +39,10 @@
                     </table>
                 </div>
 
-                
+                <!-- Boucle Foreach pour le lien "Voir le foyer" -->
+                @foreach ($foyers as $foyer)
+                    <p>{{ $foyer->nom }} - <a href="{{ route('foyer.show', ['id' => $foyer->id]) }}">Voir le foyer</a></p>
+                @endforeach
             </div>
         </div>
     </div>

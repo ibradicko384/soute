@@ -30,6 +30,7 @@
                         @endisset
                     </tbody>
                 </table>
+@endisset
 
             </div>
         </div>

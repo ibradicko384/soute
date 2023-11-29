@@ -28,11 +28,12 @@
                             <button type="submit" class="btn btn-success">Enregistrer</button>
                         </div>
                     </form>
+                    liste_foyers
 
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-8">
                                         <a href="{{ route('liste_foyers') }}" class="btn btn-primary">Voir la liste</a>
             
         </div>
