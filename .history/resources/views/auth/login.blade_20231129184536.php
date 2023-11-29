@@ -17,7 +17,7 @@
                 <form method="post" action="{{ route('login_admin') }}" class="pt-5">
                     @csrf
                     <div class="input-container">
-                        <input placeholder="Email"  id="email" class="form-control" type="text" name="email" required autocomplete="">
+                        <input placeholder="Email"  id="pass" class="form-control" type="password" name="password" required autocomplete="current-password">
                        
                     </div>
                     <br>

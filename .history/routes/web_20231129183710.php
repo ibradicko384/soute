@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Routes d'authentification
     Route::get('/auth/admin-register', [RegisteredAdminController::class, 'create'])->name('register_admin');
-    Route::post('/auth/admin-register', [RegisteredAdminController::class, 'store'])->name('admin-register');
+    Route::post('/auth/admin-register', [RegisteredAdminController::class, 'store']);
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });

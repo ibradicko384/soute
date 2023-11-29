@@ -3,6 +3,7 @@
 <div class="mt-3">
 <h3>Enregistrer un administrateur</h3>
     <form method="POST" action="{{ route('admin-register') }}">
+    {{-- <form method="POST" action="{{ route('admin-register') }}"> --}}
     @csrf
         <!-- Name -->
         <div class="col-8">
@@ -27,7 +28,7 @@
         <div class="mt-2 col-8">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -39,7 +40,7 @@
                             name="password"
                             required autocomplete="new-password" />
 
-            {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
@@ -50,7 +51,7 @@
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" />
 
-            {{-- <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" /> --}}
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
        <!-- Ajoutez cette ligne à votre formulaire d'inscription -->
        <div class="form-group row">

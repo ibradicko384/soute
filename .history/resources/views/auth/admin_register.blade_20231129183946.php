@@ -2,7 +2,8 @@
 @section('body')
 <div class="mt-3">
 <h3>Enregistrer un administrateur</h3>
-    <form method="POST" action="{{ route('admin-register') }}">
+    <form method="POST" >
+    {{-- <form method="POST" action="{{ route('admin-register') }}"> --}}
     @csrf
         <!-- Name -->
         <div class="col-8">
@@ -50,7 +51,7 @@
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" />
 
-            {{-- <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" /> --}}
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
        <!-- Ajoutez cette ligne à votre formulaire d'inscription -->
        <div class="form-group row">
