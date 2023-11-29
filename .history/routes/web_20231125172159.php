@@ -19,7 +19,7 @@ Route::get('/backoffice/dashboard', function () {
 
     Route::middleware(['auth', 'verified'])->group(function () {
     // Routes d'authentification
-    Route::get('/backoffice/register', [RegisteredUserController::class, 'create'])
+    Route::get('/backoffice/register', [RegisteredUserController::class, 'create']);
     Route::post('/backoffice/register', [RegisteredUserController::class, 'store'])->name('foyer');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 

@@ -16,12 +16,13 @@ Route::get('/backoffice/dashboard', function () {
     return view('backoffice.dashboard');
 })->name('dashboard');
 
-    Route::middleware(['auth])->group(function () {
+
+    Route::middleware(['auth', 'verified'])->group(function () {
     // Routes d'authentification
     Route::get('/backoffice/register', [RegisteredUserController::class, 'create']);
-    Route::post('/backoffice/register', [RegisteredUserController::class, 'store']);
+    Route::post('/backoffice/register', [RegisteredUserController::class, 'store'])->name('login');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-});
+
     // Aidemenage
     Route::get('/backoffice/aidemenage/create', [AidemenageController::class, 'create'])->name('aidemenage.create');
     Route::get('/backoffice/aidemenage/lister', [AidemenageController::class, 'lister'])->name('list_aidemenage');
@@ -37,8 +38,6 @@ Route::get('/backoffice/dashboard', function () {
     // User
     Route::get('/backoffice/user', [RegisteredUserController::class, 'lister'])->name('user');
     Route::get('/backoffice/user/{id}/edit', [RegisteredUserController::class, 'edit'])->name('editUser');
-
-
     Route::get('/backoffice/user/{id}', [RegisteredUserController::class, 'show'])->name('showUser');
     Route::delete('/backoffice/user/{id}', [RegisteredUserController::class, 'destroy'])->name('deleteUser');
 
@@ -49,25 +48,5 @@ Route::get('/backoffice/dashboard', function () {
 
     // Routes Supplémentaires
     Route::get('/menagere', [AidemenageController::class, 'AidePublicAidesMenageres'])->name('menagere');
-    // routes/web.php
-
-    Route::get('/commentaires/commentaire', [CommentaireController::class, 'store'])
-     ->name('commentaire');
-
-   // web.php
-Route::get('/verification/notice', [VerificationController::class, 'notice'])
-->name('verification.notice');
-
-
-Route::get('/email/verify', function () {
-    // ...
-})->middleware('auth')->name('verification.notice');
-
-Route::get('/email/verify/{id}/{hash}', function () {
-    // ...
-})->middleware(['auth', 'signed'])->name('verification.verify');
-
-Route::post('/email/verification-notification', function () {
-    // ...
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
+    Route::get('/backoffice/commentaire', [CommentaireController::class, 'commentaire'])->name('commentaire');
+});

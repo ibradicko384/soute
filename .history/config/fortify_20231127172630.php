@@ -160,9 +160,6 @@ return [
         Features::twoFactorAuthentication([
             'confirm' => true,
             'confirmPassword' => true,
-            'views' => true,
-            'view_responses' => [
-                'login' => 'auth.login',
             // 'window' => 0,
         ]),
     ],

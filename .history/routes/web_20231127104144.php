@@ -20,7 +20,7 @@ Route::get('/backoffice/dashboard', function () {
     Route::middleware(['auth', 'verified'])->group(function () {
     // Routes d'authentification
     Route::get('/backoffice/register', [RegisteredUserController::class, 'create']);
-    Route::post('/backoffice/register', [RegisteredUserController::class, 'store']);
+    Route::post('/backoffice/register', [RegisteredUserController::class, 'store'])->name('login');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     // Aidemenage
@@ -49,8 +49,4 @@ Route::get('/backoffice/dashboard', function () {
     // Routes Supplémentaires
     Route::get('/menagere', [AidemenageController::class, 'AidePublicAidesMenageres'])->name('menagere');
     Route::get('/backoffice/commentaire', [CommentaireController::class, 'commentaire'])->name('commentaire');
-    // web.php
-Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
-// D'autres routes de vérification d'e-mail peuvent être nécessaires en fonction de votre configuration
-
-
+});
