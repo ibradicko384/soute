@@ -51,13 +51,11 @@ class AidemenageController extends Controller
     public function ListeMenagere(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
         return view('backoffice.liste_menagere');
-        dd($aidemenages);
 
     }
 
     public function lister(Request $request): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-        dd($aidemenages);
         $foyers = Foyer::all();
         $selectedFoyer = $request->input('foyer', 'all');
         $aidemenages = Aidemenage::all();

@@ -46,6 +46,7 @@ Route::post('/backoffice/aidemenage/store', [AidemenageController::class, 'store
 Route::get('/backoffice/liste_menagere', [AidemenageController::class, 'ListeMenagere'])->name('liste_menagere');
 Route::get('/backoffice/liste_menagere', [AidemenageController::class, 'lister'])->name('liste.menagere');
 Route::get('/backoffice/liste_menagere', [AidemenageController::class, 'ListeMenagere'])->name('liste_menagere');
+Route::get('/backoffice/liste_menagere', [AidemenageController::class, 'ListeMenagere'])->name('liste_menagere');
 
 
 
