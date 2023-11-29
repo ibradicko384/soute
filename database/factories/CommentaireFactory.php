@@ -12,7 +12,9 @@ class CommentaireFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array
+     *
+     * @psalm-return array<never, never>
      */
     public function definition(): array
     {

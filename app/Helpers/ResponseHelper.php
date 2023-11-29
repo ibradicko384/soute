@@ -12,7 +12,7 @@ class ResponseHelper
      * @param string $message
      * @return \Illuminate\Http\RedirectResponse
      */
-    public static function redirectWithSuccess($route, $message)
+    public static function redirectWithSuccess($route, $message): \Illuminate\Http\RedirectResponse
     {
         return Redirect::route($route)->with('success', $message);
     }
