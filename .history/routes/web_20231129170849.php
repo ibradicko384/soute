@@ -17,9 +17,9 @@ use App\Http\Controllers\Foyer;
 
 
 
-Route::get('login', [AuthenticatedSessionController::class, 'create'])
-            ->name('login_admin');
 Route::middleware(['auth'])->group(function () {
+    Route::get('', [AuthenticatedSessionController::class, 'create'])
+                ->name('login');
     Route::get('/', function () {
         return view('backoffice.dashboard');
     })->name('home');
@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('backoffice.dashboard');
 
     // Routes d'authentification
-    Route::get('/auth/admin-register', [RegisteredAdminController::class, 'create'])->name('register_admin');
+    Route::get('/auth/admin-register', [RegisteredAdminController::class, 'create'])->name('admin-register');
     Route::post('/auth/admin-register', [RegisteredAdminController::class, 'store']);
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
@@ -45,7 +45,7 @@ Route::get('/backoffice/aidemenage/lister', [AidemenageController::class, 'liste
 Route::post('/backoffice/aidemenage/store', [AidemenageController::class, 'store'])->name('aidemenage.store');
 Route::get('/backoffice/liste_menagere', [AidemenageController::class, 'ListeMenagere'])->name('liste_menagere');
 Route::get('/backoffice/liste_menagere', [AidemenageController::class, 'lister'])->name('liste.menagere');
-Route::get('/backoffice/liste_menagere', [AidemenageController::class, 'ListeMenagere'])->name('liste_menagere');
+Route::get('/liste_menagere', [AidemenageController::class, 'ListeMenagere'])->name('liste_menagere');
 
 
 

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AidemenageRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Aidemenage;
-use App\Http\Controllers\Foyer;
 use App\User;
 
 
@@ -21,25 +20,22 @@ class AidemenageController extends Controller
 
     public function store(AidemenageRequest $request)
 {
+   
+{
     try {
-        $data = [
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'date_de_naissance' => $request->date,
-            'quartier' => $request->quartier,
-        ];
+        // Supprimez cette ligne si vous avez, elle est généralement ajoutée automatiquement
+        // $validatedData['created_at'] = now();
+        
+        Aidemenage::create($validatedData);
 
-        Aidemenage::create($data);
-
-        return redirect()->route('liste_menagere')->with('success', 'Aide menage enregistré avec succès.');
+        return redirect()->route('list.menagere')->with('success', 'Aidemenage enregistré avec succès.');
     } catch (\Exception $e) {
         dd($e->getMessage());
-        // Ou log l'erreur
-        // Log::error($e->getMessage());
         return redirect()->back()->withInput()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
     }
 }
 
+}
 
 
     public function AidePublicAidesMenageres(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory

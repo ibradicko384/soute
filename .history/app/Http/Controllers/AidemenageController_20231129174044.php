@@ -31,7 +31,7 @@ class AidemenageController extends Controller
 
         Aidemenage::create($data);
 
-        return redirect()->route('liste_menagere')->with('success', 'Aide menage enregistré avec succès.');
+        return redirect()->route('liste_menagere')->with('success', 'Aidemenage enregistré avec succès.');
     } catch (\Exception $e) {
         dd($e->getMessage());
         // Ou log l'erreur

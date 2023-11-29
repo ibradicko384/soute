@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AidemenageRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Aidemenage;
-use App\Http\Controllers\Foyer;
 use App\User;
 
 
@@ -22,25 +21,30 @@ class AidemenageController extends Controller
     public function store(AidemenageRequest $request)
 {
     try {
-        $data = [
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'date_de_naissance' => $request->date,
-            'quartier' => $request->quartier,
-        ];
+        if ($request->hasFile('quartier_Aidemenage')) {
+            if (!Storage::disk('public')->exists('aidemenages')) {
+                Storage::disk('public')->makeDirectory('aidemenages');
+            }
 
-        Aidemenage::create($data);
+            $file = $request->file('quartier_Aidemenage');
+            $filePath = $file->store('aidemenages', 'public');
 
-        return redirect()->route('liste_menagere')->with('success', 'Aide menage enregistré avec succès.');
+            $validatedData = $request->validated();
+            $validatedData['quartier_Aidemenage'] = Storage::url($filePath);
+
+            Aidemenage::create($validatedData);
+
+            return redirect()->route('aidemenage.create')->with('success', 'Aidemenage enregistré avec succès.');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Veuillez sélectionner un fichier pour le champ quartier.');
+        }
     } catch (\Exception $e) {
-        dd($e->getMessage());
-        // Ou log l'erreur
-        // Log::error($e->getMessage());
         return redirect()->back()->withInput()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
     }
+    
+
+    
 }
-
-
 
     public function AidePublicAidesMenageres(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
@@ -50,8 +54,7 @@ class AidemenageController extends Controller
 
     public function ListeMenagere(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-        return view('backoffice.liste_menagere');
-
+        return view('backliste_menagere');
     }
 
     public function lister(Request $request): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory

@@ -9,13 +9,13 @@ class CreateAidemenageTable extends Migration
     {
         Schema::create('aidemenage', function (Blueprint $table) {
             $table->id();
-            $table->string('nom')->nullable();
-            $table->string('prenom')->nullable();
+            $table->string('nom')->default(''); // ou une autre valeur par défaut
+
+            $table->string('prenom');
             $table->date('date_de_naissance')->nullable();
             $table->string('quartier')->nullable();
             $table->timestamps();
         });
-        
     }
 
     public function down()

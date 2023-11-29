@@ -30,10 +30,4 @@ class Aidemenage extends Model
      * @var bool
      */
     public $incrementing = true;
-
-    public function foyer()
-{
-    return $this->belongsTo(Foyer::class);
-}
-
 }

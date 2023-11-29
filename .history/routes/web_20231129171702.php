@@ -18,7 +18,8 @@ use App\Http\Controllers\Foyer;
 
 
 Route::get('login', [AuthenticatedSessionController::class, 'create'])
-            ->name('login_admin');
+            ->name('login_admin
+            ');
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('backoffice.dashboard');

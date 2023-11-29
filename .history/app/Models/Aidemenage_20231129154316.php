@@ -10,7 +10,7 @@ class Aidemenage extends Model
     use HasFactory;
 
     protected $table = 'aidemenage';
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -30,10 +30,4 @@ class Aidemenage extends Model
      * @var bool
      */
     public $incrementing = true;
-
-    public function foyer()
-{
-    return $this->belongsTo(Foyer::class);
-}
-
 }

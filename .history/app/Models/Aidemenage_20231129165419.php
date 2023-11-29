@@ -31,9 +31,5 @@ class Aidemenage extends Model
      */
     public $incrementing = true;
 
-    public function foyer()
-{
-    return $this->belongsTo(Foyer::class);
-}
-
+    
 }

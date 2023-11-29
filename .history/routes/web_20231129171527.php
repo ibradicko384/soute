@@ -18,7 +18,7 @@ use App\Http\Controllers\Foyer;
 
 
 Route::get('login', [AuthenticatedSessionController::class, 'create'])
-            ->name('login_admin');
+            ->name('login');
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('backoffice.dashboard');
@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('backoffice.dashboard');
 
     // Routes d'authentification
-    Route::get('/auth/admin-register', [RegisteredAdminController::class, 'create'])->name('register_admin');
+    Route::get('/auth/admin-register', [RegisteredAdminController::class, 'create'])->name('register_');
     Route::post('/auth/admin-register', [RegisteredAdminController::class, 'store']);
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
