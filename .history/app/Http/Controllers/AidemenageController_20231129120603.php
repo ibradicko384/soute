@@ -20,6 +20,8 @@ class AidemenageController extends Controller
 
     public function store(AidemenageRequest $request)
 {
+
+    
     try {
         if ($request->hasFile('quartier_Aidemenage')) {
             if (!Storage::disk('public')->exists('aidemenages')) {
@@ -35,10 +37,13 @@ class AidemenageController extends Controller
             Aidemenage::create($validatedData);
 
             return redirect()->route('list.menagere')->with('success', 'Aidemenage enregistré avec succès.');
-        } catch (\Exception $e) {
-            return redirect()->back()->withInput()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
-        }
-   
+        } 
+    } catch (\Exception $e) {
+        return redirect()->back()->withInput()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
+    }
+    
+
+    
 }
 
     public function AidePublicAidesMenageres(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
@@ -50,7 +55,6 @@ class AidemenageController extends Controller
     public function ListeMenagere(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
         return view('backoffice.liste_menagere');
-        return redirect()->route('menagere.create');
 
     }
 

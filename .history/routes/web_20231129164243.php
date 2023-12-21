@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\VerificationController;
 use Laravel\Fortify\Fortify;
- App\Http\Controllers\Foyer
 
 
 

@@ -12,15 +12,16 @@ return new class extends Migration
     public function up()
 {
     Schema::table('aidemenages', function (Blueprint $table) {
-        $table->foreignId('foyer_id')->nullable()->constrained(); // Assurez-vous que le type de la clé étrangère est approprié
+        $table->unsignedBigInteger('foyer_id')->nullable();
+        // Ajoutez d'autres colonnes ou contraintes si nécessaire
     });
 }
 
 public function down()
 {
     Schema::table('aidemenages', function (Blueprint $table) {
-        $table->dropForeign(['foyer_id']);
         $table->dropColumn('foyer_id');
+        // Ajoutez d'autres instructions de suppression si nécessaire
     });
 }
 

@@ -20,23 +20,31 @@ class AidemenageController extends Controller
 
     public function store(AidemenageRequest $request)
 {
-   
 
+    
     try {
-        // Supprimez cette ligne si vous avez, elle est généralement ajoutée automatiquement
-        // $validatedData['created_at'] = now();
-        
-        Aidemenage::create($validatedData);
+        if ($request->hasFile('quartier_Aidemenage')) {
+            if (!Storage::disk('public')->exists('aidemenages')) {
+                Storage::disk('public')->makeDirectory('aidemenages');
+            }
 
-        return redirect()->route('list.menagere')->with('success', 'Aidemenage enregistré avec succès.');
+            $file = $request->file('quartier_Aidemenage');
+            $filePath = $file->store('aidemenages', 'public');
+
+            $validatedData = $request->validated();
+            $validatedData['quartier_Aidemenage'] = Storage::url($filePath);
+
+            Aidemenage::create($validatedData);
+
+            return redirect()->route('list.menagere')->with('success', 'Aidemenage enregistré avec succès.');
+        } 
     } catch (\Exception $e) {
-        dd($e->getMessage());
         return redirect()->back()->withInput()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
     }
-}
+    
 
+    
 }
-
 
     public function AidePublicAidesMenageres(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {

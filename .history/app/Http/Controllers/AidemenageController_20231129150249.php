@@ -23,12 +23,22 @@ class AidemenageController extends Controller
 
     
     try {
-        Aidemenage::create($validatedData);
-        return redirect()->route('list.menagere')->with('success', 'Aidemenage enregistré avec succès.');
+        if ($request->hasFile('quartier_Aidemenage')) {
+            if (!Storage::disk('public')->exists('aidemenages')) {
+                Storage::disk('public')->makeDirectory('aidemenages');
+            }
+
+            $file = $request->file('quartier_Aidemenage');
+            $filePath = $file->store('aidemenages', 'public');
+
+            $validatedData = $request->validated();
+            $validatedData['quartier_Aidemenage'] = Storage::url($filePath);
+
+            Aidemenage::create($validatedData);
+
+            return redirect()->route('list.menagere')->with('success', 'Aidemenage enregistré avec succès.');
+        } 
     } catch (\Exception $e) {
-        dd($e->getMessage());
-        Ou log l'erreur
-        Log::error($e->getMessage());
         return redirect()->back()->withInput()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
     }
     

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('aidemenage', function (Blueprint $table) {
-            $table->id();->primary();
+            $table->id()->primary();
             $table->string('nom')->unique();;
             $table->string('prenom');
             $table->text('date_de_naissance')->nullable();
